@@ -4,19 +4,28 @@ import helmet from 'helmet';
 import cors from 'cors';
 import { notFound } from './middleware.js';
 import dataBaseConnection from './api/DB/dataBaseConnection.js';
+import { authRouter } from './api/routes/index.js';
 
 
 const defineRelations = () => {
 
 }
 
-const app = express();
+var app;
+
+const paths = {
+    auth: '/api/auth',
+}
+
+app = express();
 
 try {
     app.use(morgan('dev'));
     app.use(helmet());
     app.use(cors());
     app.use(json());
+
+    app.use(paths.auth, authRouter);
 
     app.get('/', async (req, res) => {
         const [result, data] = await dataBaseConnection.query('SELECT NOW()')
