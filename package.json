@@ -6,10 +6,10 @@
   "type": "module",
   "scripts": {
     "startNodemon": "nodemon ./src/index.js",
-    "startRender": "node ./public/bundle.cjs",
+    "startRender": "node ./build/bundle.cjs",
     "start": "npm run startNodemon & webpack-dev-server --inline --hot",
     "build": "webpack --env NODE_ENV=production --config webpack.config.cjs",
-    "startServer": "npm run build && node ./public/bundle.cjs"
+    "startServer": "npm run build && node ./build/bundle.cjs"
   },
   "author": "",
   "license": "ISC",
