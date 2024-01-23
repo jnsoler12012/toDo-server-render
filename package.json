@@ -1,0 +1,44 @@
+{
+  "name": "server-todo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "startNodemon": "nodemon ./src/index.js",
+    "startRender": "node ./public/bundle.cjs",
+    "start": "npm run startNodemon & webpack-dev-server --inline --hot",
+    "build": "webpack --env NODE_ENV=production --config webpack.config.cjs",
+    "startServer": "npm run build && node ./public/bundle.cjs"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.23.7",
+    "@babel/preset-env": "^7.23.8",
+    "babel-loader": "^9.1.3",
+    "nodemon": "^3.0.3",
+    "dotenv-webpack": "^8.0.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1",
+    "webpack-node-externals": "^3.0.0",
+    "webpack-shell-plugin": "^0.5.0"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "dotenv-cli": "^7.3.0",
+    "express": "^4.18.2",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "mysql2": "^3.7.1",
+    "pg": "^8.11.3",
+    "pg-hstore": "^2.3.4",
+    "process": "^0.11.10",
+    "sequelize": "^6.35.2",
+    "webpack": "^5.89.0"
+  }
+}
