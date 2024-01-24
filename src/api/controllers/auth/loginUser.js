@@ -42,7 +42,7 @@ export default async (req, res) => {
                         path: `Password`
                     }
                 }
-                console.log(login?.dataValues?.state, login?.dataValues?.retriesPassword);
+                console.log(login, login?.dataValues?.state, login?.dataValues?.retriesPassword);
                 const token = jwt.sign(
                     {
                         userId: login.dataValues.id,
@@ -57,7 +57,7 @@ export default async (req, res) => {
                     message: "Login Succeess",
                     token: token,
                     data: {
-                        user: login.dataValues
+                        user: login.dataValues || login
                     }
                 })
             })

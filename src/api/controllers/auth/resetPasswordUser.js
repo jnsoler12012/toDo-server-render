@@ -17,15 +17,17 @@ export default async (req, res) => {
                 path: `Email ${email},Password ${password}`
             }
 
-        const userEmail = await User.findAll({
+        const user = await User.findOne({
             where: {
                 email: email
             }
         })
 
-        if (userEmail.length > 0) {
+        console.log(user);
+
+        if (user.length < 0 || !user) {
             throw {
-                message: "Email already taken by another user",
+                message: "Email does no exists",
                 status: 400,
                 path: `Email ${email}`
             }
@@ -33,16 +35,20 @@ export default async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        const created = await User.create({
-            email,
+        const created = await User.update({
             password: hashedPassword
+        }, {
+            where: {
+                id: user.dataValues.id
+            }
         })
-
 
         return res.status(200).json({
             success: true,
-            message: "User Created successfully",
-            data: created
+            message: "User Modified succesfully",
+            data: {
+                email: user.dataValues.id
+            }
         })
 
     } catch (error) {
