@@ -14,7 +14,6 @@ module.exports = (env) => {
             path: path.resolve(__dirname, 'build/'),
             filename: 'bundle.cjs'
         },
-
         module: {
             rules: [
                 {
