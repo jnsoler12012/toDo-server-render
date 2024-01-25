@@ -42,7 +42,7 @@ export default async (req, res) => {
             ],
         })
 
-        console.log(taskRequired?.dataValues?.userToDo);
+        console.log(taskRequired, taskRequired?.dataValues?.userToDo?.dataValues, idRequester, taskRequired?.dataValues?.userToDo?.dataValues?.id === idRequester, taskRequired?.dataValues?.userToDo?.dataValues?.id !== idRequester, typeof idRequester, typeof taskRequired?.dataValues?.userToDo?.dataValues?.id);
 
         if (!taskRequired)
             throw {
@@ -51,7 +51,7 @@ export default async (req, res) => {
                 path: `IdTaskRequested ${idRequired}`
             }
 
-        if (taskRequired?.dataValues?.userToDo?.dataValues?.id !== idRequester)
+        if (taskRequired?.dataValues?.userToDo?.dataValues?.id !== parseInt(idRequester))
             throw {
                 message: "Only users with the task ownership can delete it",
                 status: 400,
@@ -67,7 +67,7 @@ export default async (req, res) => {
         })
         return res.status(200).json({
             success: true,
-            message: "User modified succesfully",
+            message: "Task modified succesfully",
             data: {
                 ...attrModify
             }

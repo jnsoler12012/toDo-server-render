@@ -19,7 +19,7 @@ export default async (req, res) => {
             ],
         })
 
-        console.log(taskRequired?.dataValues?.userToDo);
+        console.log(taskRequired, typeof idUserRequester);
 
         if (!taskRequired)
             throw {
@@ -28,7 +28,7 @@ export default async (req, res) => {
                 path: `IdTaskRequested ${idRequired}`
             }
 
-        if (taskRequired?.dataValues?.userToDo?.dataValues?.id !== idUserRequester)
+        if (taskRequired?.dataValues?.userToDo?.dataValues?.id !== parseInt(idUserRequester))
             throw {
                 message: "Only users with the task ownership can delete it",
                 status: 400,
