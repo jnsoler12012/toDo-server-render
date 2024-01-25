@@ -12,7 +12,8 @@ module.exports = (env) => {
         watch: env.NODE_ENV === 'development',
         output: {
             path: path.resolve(__dirname, 'build/'),
-            filename: 'bundle.cjs'
+            filename: 'bundle.cjs',
+            clean: true,
         },
         module: {
             rules: [
