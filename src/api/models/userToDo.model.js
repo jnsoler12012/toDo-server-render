@@ -16,7 +16,16 @@ export default (sequelize) => {
                     isEmail: true
                 }
             },
+            name: {
+                type: DataTypes.STRING,
+                unique: false,
+                allowNull: false,
+            },
             password: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
+            imageRef: {
                 type: DataTypes.STRING,
                 allowNull: false,
             },

@@ -7,7 +7,7 @@ import { User } from '../../models/index.js'
 
 export default async (req, res) => {
     console.log("Peticion recibida", req.body)
-    const { email, password } = req.body
+    const { email, password, name, imageRef } = req.body
 
     try {
         if (!email && !password)
@@ -35,7 +35,8 @@ export default async (req, res) => {
 
         const created = await User.create({
             email,
-            password: hashedPassword
+            password: hashedPassword,
+            name, imageRef
         })
 
 
